@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Dicas — BnnT Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Favicon BnnT Global -->
+<link rel="icon" type="image/svg+xml" href="#">
+<link rel="icon" type="image/png" sizes="32x32" href="#">
+<link rel="apple-touch-icon" sizes="180x180" href="#">
+<meta name="theme-color" content="#0a1628">
+<style>
+.page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;z-index:1}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-2px;margin:.75rem 0 1rem}
+.page-hero p{color:var(--silver);font-size:1.05rem;max-width:520px;margin:0 auto;line-height:1.75}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(125,196,50,.09),transparent);pointer-events:none}
+
+.blog-layout{max-width:1140px;margin:0 auto;padding:0 2rem 6rem;display:grid;grid-template-columns:1fr 320px;gap:3rem}
+
+/* POSTS */
+.post-featured{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:2rem;display:grid;grid-template-columns:1.2fr 1fr;transition:border-color .2s}
+.post-featured:hover{border-color:rgba(125,196,50,.35)}
+.post-featured-img{background:var(--navy3);display:flex;align-items:center;justify-content:center;font-size:5rem;min-height:280px;position:relative;overflow:hidden}
+.post-featured-img::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(125,196,50,.07),transparent)}
+.post-featured-body{padding:2.5rem}
+.post-tag{display:inline-block;background:rgba(125,196,50,.1);border:1px solid var(--border);border-radius:6px;padding:.2rem .65rem;font-size:.7rem;color:var(--green2);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.post-featured-body h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.75rem;line-height:1.2}
+.post-featured-body h2 a{color:var(--white);text-decoration:none;transition:color .2s}
+.post-featured-body h2 a:hover{color:var(--green)}
+.post-featured-body p{color:var(--silver);font-size:.88rem;line-height:1.7;margin-bottom:1.2rem}
+.post-meta{display:flex;align-items:center;gap:1rem;font-size:.75rem;color:var(--silver)}
+.post-meta span{display:flex;align-items:center;gap:.3rem}
+
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.post-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;overflow:hidden;transition:all .3s}
+.post-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.post-card-img{background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:3.5rem;height:160px}
+.post-card-body{padding:1.3rem}
+.post-card-body h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin:.5rem 0 .4rem;line-height:1.3}
+.post-card-body h3 a{color:var(--white);text-decoration:none;transition:color .2s}
+.post-card-body h3 a:hover{color:var(--green)}
+.post-card-body p{font-size:.8rem;color:var(--silver);line-height:1.55;margin-bottom:.8rem}
+.read-more{font-size:.78rem;color:var(--green);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:.3rem;transition:gap .2s}
+.read-more:hover{gap:.5rem}
+
+/* SIDEBAR */
+.blog-sidebar{}
+.sidebar-widget{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.sidebar-widget h4{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;margin-bottom:1rem;letter-spacing:.08em;color:var(--silver2);text-transform:uppercase}
+.search-box{display:flex;gap:.5rem}
+.search-box input{flex:1;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.6rem .9rem;color:var(--white);font-size:.85rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.search-box input:focus{border-color:var(--border)}
+.search-box button{background:var(--green);border:none;border-radius:8px;width:38px;cursor:pointer;font-size:.9rem;transition:background .2s}
+.search-box button:hover{background:var(--green2)}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag-btn{background:var(--navy3);border:1px solid var(--border2);border-radius:6px;padding:.25rem .7rem;font-size:.75rem;color:var(--silver);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.tag-btn:hover{border-color:var(--border);color:var(--green)}
+.recent-list{display:flex;flex-direction:column;gap:.8rem}
+.recent-item{display:flex;align-items:center;gap:.75rem;text-decoration:none;transition:all .2s;padding:.4rem;border-radius:8px}
+.recent-item:hover{background:rgba(125,196,50,.04)}
+.recent-icon{width:40px;height:40px;background:var(--navy3);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.recent-title{font-size:.82rem;color:var(--white);line-height:1.35;font-weight:500;transition:color .2s}
+.recent-item:hover .recent-title{color:var(--green)}
+.recent-date{font-size:.71rem;color:var(--silver);margin-top:.15rem}
+.newsletter-box{text-align:center}
+.newsletter-box p{font-size:.83rem;color:var(--silver);margin-bottom:1rem;line-height:1.55}
+.newsletter-box input{width:100%;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.65rem .9rem;color:var(--white);font-size:.85rem;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:.6rem;transition:border-color .2s}
+.newsletter-box input:focus{border-color:var(--border)}
+.newsletter-box button{width:100%;background:var(--green);color:var(--navy);border:none;border-radius:8px;padding:.65rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:background .2s}
+.newsletter-box button:hover{background:var(--green2)}
+
+.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem}
+.page-btn{width:38px;height:38px;background:var(--card);border:1px solid var(--border2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--silver);cursor:pointer;transition:all .2s;font-family:'Syne',sans-serif}
+.page-btn.active,.page-btn:hover{background:rgba(125,196,50,.1);border-color:var(--border);color:var(--green)}
+
+@media(max-width:1000px){.blog-layout{grid-template-columns:1fr}.blog-sidebar{display:none}}
+@media(max-width:700px){.post-featured{grid-template-columns:1fr}.posts-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="circuit-bg"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><style>.cl{stroke:#7dc432;stroke-width:.5;fill:none}</style></defs><line class="cl" x1="80" y1="0" x2="80" y2="180" opacity=".4"/><line class="cl" x1="80" y1="180" x2="280" y2="180" opacity=".4"/><circle cx="280" cy="180" r="3" fill="#7dc432" opacity=".5"/><line class="cl" x1="1360" y1="0" x2="1360" y2="140" opacity=".4"/><circle cx="1080" cy="140" r="3" fill="#7dc432" opacity=".5"/></svg></div>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="#7dc432" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>BnnT<span>Global</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="sobre.html">Sobre</a></li><li><a href="blog.html" class="active">Blog</a></li><li><a href="contato.html">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="window.location='carrinho.html'">🛒<span class="cart-count" style="display:none">0</span></button>
+    <a class="nav-cta" href="contato.html">Consultoria Grátis</a>
+    <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="produtos.html">Produtos</a><a href="sobre.html">Sobre</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a><a href="carrinho.html">🛒 Carrinho</a></div>
+
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="badge anim-up"><span class="dot" style="animation:pulse 2s infinite"></span>Dicas & Conteúdo</div>
+  <h1 class="anim-up-2">Blog <span class="accent">BnnT</span></h1>
+  <p class="anim-up-3">Reviews, comparativos, guias de compra e as melhores dicas de tecnologia para você comprar sempre com inteligência.</p>
+</div>
+
+<div class="blog-layout">
+  <!-- MAIN -->
+  <main>
+    <!-- FEATURED POST -->
+    <div class="post-featured reveal">
+      <div class="post-featured-img">📱</div>
+      <div class="post-featured-body">
+        <span class="post-tag">Guia de Compra</span>
+        <h2><a href="#">Como escolher o smartphone ideal em 2025: guia completo por faixa de preço</a></h2>
+        <p>Está confuso com tantas opções? Criamos o guia definitivo para você escolher o melhor smartphone do mercado, do básico ao premium, sem errar na compra.</p>
+        <div class="post-meta">
+          <span>📅 15 Mai 2025</span>
+          <span>⏱️ 8 min de leitura</span>
+          <span>👁️ 2.4k views</span>
+        </div>
+        <a href="#" class="btn-ghost" style="margin-top:1rem">Ler artigo completo →</a>
+      </div>
+    </div>
+
+    <!-- POSTS GRID -->
+    <div class="posts-grid reveal-grid">
+      <div class="post-card">
+        <div class="post-card-img">🎧</div>
+        <div class="post-card-body">
+          <span class="post-tag">Review</span>
+          <h3><a href="#">Fones com ANC: os 5 melhores até R$500 testados pela equipe BnnT</a></h3>
+          <p>Testamos os principais modelos com cancelamento de ruído ativo disponíveis no mercado brasileiro. Veja nosso ranking completo.</p>
+          <a href="#" class="read-more">Ler mais →</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-card-img">⌚</div>
+        <div class="post-card-body">
+          <span class="post-tag">Comparativo</span>
+          <h3><a href="#">Smartwatch ou pulseira fitness? Qual comprar em 2025?</a></h3>
+          <p>Diferenças, vantagens e desvantagens de cada tipo de wearable para você tomar a melhor decisão de compra.</p>
+          <a href="#" class="read-more">Ler mais →</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-card-img">🎮</div>
+        <div class="post-card-body">
+          <span class="post-tag">Gaming</span>
+          <h3><a href="#">Setup gamer completo por R$1.500: o que comprar e onde encontrar</a></h3>
+          <p>Montamos um setup gamer incrível com o melhor custo-benefício do mercado, usando nossas plataformas parceiras.</p>
+          <a href="#" class="read-more">Ler mais →</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-card-img">💻</div>
+        <div class="post-card-body">
+          <span class="post-tag">Guia</span>
+          <h3><a href="#">Notebook para home office: especificações mínimas que você precisa saber</a></h3>
+          <p>RAM, processador, SSD — o que realmente importa na hora de comprar um notebook para trabalho remoto?</p>
+          <a href="#" class="read-more">Ler mais →</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-card-img">🔊</div>
+        <div class="post-card-body">
+          <span class="post-tag">Review</span>
+          <h3><a href="#">As melhores caixas de som Bluetooth de 2025: do compacto ao potente</a></h3>
+          <p>Ranking atualizado com as melhores opções de caixas Bluetooth para festa, viagem e uso doméstico.</p>
+          <a href="#" class="read-more">Ler mais →</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-card-img">🛡️</div>
+        <div class="post-card-body">
+          <span class="post-tag">Segurança</span>
+          <h3><a href="#">Como comprar em sites internacionais com segurança: guia completo</a></h3>
+          <p>AliExpress, Amazon EUA, Temu — aprenda a comprar no exterior sem cair em golpes e sem pagar imposto desnecessário.</p>
+          <a href="#" class="read-more">Ler mais →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">→</button>
+    </div>
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="blog-sidebar">
+    <div class="sidebar-widget">
+      <h4>Buscar</h4>
+      <div class="search-box"><input type="text" placeholder="Pesquisar artigos..."><button>🔍</button></div>
+    </div>
+    <div class="sidebar-widget">
+      <h4>Categorias</h4>
+      <div class="tag-cloud">
+        <button class="tag-btn">Smartphones</button>
+        <button class="tag-btn">Áudio</button>
+        <button class="tag-btn">Gaming</button>
+        <button class="tag-btn">Wearables</button>
+        <button class="tag-btn">Notebooks</button>
+        <button class="tag-btn">Reviews</button>
+        <button class="tag-btn">Guias</button>
+        <button class="tag-btn">Segurança</button>
+        <button class="tag-btn">Comparativo</button>
+      </div>
+    </div>
+    <div class="sidebar-widget">
+      <h4>Posts recentes</h4>
+      <div class="recent-list">
+        <a href="#" class="recent-item"><div class="recent-icon">📱</div><div><div class="recent-title">Guia definitivo de smartphones 2025</div><div class="recent-date">15 Mai 2025</div></div></a>
+        <a href="#" class="recent-item"><div class="recent-icon">🎧</div><div><div class="recent-title">Top 5 fones ANC até R$500</div><div class="recent-date">10 Mai 2025</div></div></a>
+        <a href="#" class="recent-item"><div class="recent-icon">🎮</div><div><div class="recent-title">Setup gamer por R$1.500</div><div class="recent-date">05 Mai 2025</div></div></a>
+        <a href="#" class="recent-item"><div class="recent-icon">⌚</div><div><div class="recent-title">Smartwatch vs pulseira fitness</div><div class="recent-date">28 Abr 2025</div></div></a>
+      </div>
+    </div>
+    <div class="sidebar-widget">
+      <h4>Newsletter</h4>
+      <div class="newsletter-box">
+        <p>Receba as melhores ofertas e reviews diretamente no seu e-mail.</p>
+        <input type="email" placeholder="seu@email.com">
+        <button onclick="showToast('✅ Inscrito! Bem-vindo à comunidade BnnT.')">Inscrever-me →</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer><div class="footer-inner"><div class="footer-grid"><div><div class="footer-logo">BnnT<span>Global</span></div><p class="footer-tagline">Tecnologia com segurança, para o Brasil e para o mundo.</p><div class="footer-social"><a class="social-btn" href="#">📸</a><a class="social-btn" href="#">📱</a><a class="social-btn" href="#">✈️</a><a class="social-btn" href="#">▶️</a></div></div><div class="footer-col"><h5>Navegação</h5><ul><li><a href="index.html">Home</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="sobre.html">Sobre</a></li><li><a href="contato.html">Contato</a></li></ul></div><div class="footer-col"><h5>Categorias Blog</h5><ul><li><a href="#">Reviews</a></li><li><a href="#">Guias de Compra</a></li><li><a href="#">Comparativos</a></li><li><a href="#">Dicas</a></li></ul></div><div class="footer-col"><h5>Redes Sociais</h5><ul><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="#">Telegram</a></li><li><a href="#">LinkedIn</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 BnnT Global · Todos os direitos reservados</p><div class="footer-badges"><span class="f-badge">Compra Segura</span><span class="f-badge">Afiliado Oficial</span></div></div></div></footer>
+
+<div id="toast" class="toast"></div>
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

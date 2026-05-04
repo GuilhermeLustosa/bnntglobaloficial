@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — BnnT Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Favicon BnnT Global -->
+<link rel="icon" type="image/svg+xml" href="#">
+<link rel="icon" type="image/png" sizes="32x32" href="#">
+<link rel="apple-touch-icon" sizes="180x180" href="#">
+<meta name="theme-color" content="#0a1628">
+<style>
+.page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;z-index:1}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-2px;margin:.75rem 0 1rem}
+.page-hero p{color:var(--silver);font-size:1.05rem;max-width:520px;margin:0 auto;line-height:1.75}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(125,196,50,.09),transparent);pointer-events:none}
+
+.contact-layout{max-width:1100px;margin:0 auto;padding:0 2rem 6rem;display:grid;grid-template-columns:1fr 1.2fr;gap:3.5rem;align-items:start}
+
+/* CHANNELS */
+.channels-col h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.channels-col p{color:var(--silver);font-size:.9rem;line-height:1.7;margin-bottom:2rem}
+.channel-list{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem}
+.channel-card{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.4rem;background:var(--card);border:1px solid var(--border2);border-radius:14px;text-decoration:none;transition:all .25s}
+.channel-card:hover{border-color:var(--border);transform:translateX(6px)}
+.ch-icon{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.ig{background:linear-gradient(135deg,rgba(193,53,132,.2),rgba(88,81,219,.2))}
+.wa{background:rgba(37,211,102,.12)}
+.tg{background:rgba(41,182,246,.12)}
+.yt{background:rgba(255,0,0,.1)}
+.li{background:rgba(10,102,194,.15)}
+.em{background:rgba(125,196,50,.1)}
+.ch-info h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.15rem}
+.ch-info p{font-size:.8rem;color:var(--silver);margin:0}
+.ch-arrow{margin-left:auto;color:var(--green3);font-size:1.2rem;transition:transform .2s}
+.channel-card:hover .ch-arrow{transform:translateX(3px)}
+
+.hours-box{background:var(--card2);border:1px solid var(--border2);border-radius:14px;padding:1.5rem}
+.hours-box h4{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:1rem;color:var(--silver2)}
+.hours-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--border2);font-size:.82rem}
+.hours-row:last-child{border-bottom:none}
+.hours-row .day{color:var(--silver)}
+.hours-row .time{color:var(--green);font-weight:500}
+.status-pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(125,196,50,.08);border:1px solid rgba(125,196,50,.2);border-radius:20px;padding:.25rem .8rem;font-size:.72rem;color:var(--green2);margin-top:1rem}
+.status-pill .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+
+/* FORM */
+.form-col{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2.5rem}
+.form-col h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.4rem}
+.form-col>p{color:var(--silver);font-size:.85rem;margin-bottom:2rem;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:.72rem;color:var(--silver);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.45rem;font-weight:500}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--navy3);border:1px solid var(--border2);border-radius:10px;padding:.8rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;appearance:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:rgba(125,196,50,.4);box-shadow:0 0 0 3px rgba(125,196,50,.06)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--silver);opacity:.5}
+.form-group textarea{resize:vertical;min-height:120px;line-height:1.5}
+.form-group select option{background:var(--navy3)}
+.form-check{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--silver);line-height:1.5;cursor:pointer}
+.form-check input[type=checkbox]{width:16px;height:16px;margin-top:.15rem;accent-color:var(--green);flex-shrink:0}
+.submit-btn{width:100%;background:var(--green);color:var(--navy);border:none;border-radius:10px;padding:.95rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.submit-btn:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 8px 25px rgba(125,196,50,.2)}
+
+/* FAQ */
+.faq-section{background:var(--navy2);padding:5rem 2rem;position:relative;z-index:1}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:900px;margin:3rem auto 0}
+.faq-item{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:var(--border)}
+.faq-q{padding:1.2rem 1.4rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:'Syne',sans-serif;font-size:.92rem;font-weight:600}
+.faq-q .arrow{color:var(--green);transition:transform .3s;font-size:1rem;flex-shrink:0}
+.faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .2s}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.4rem 1.2rem}
+.faq-a p{font-size:.84rem;color:var(--silver);line-height:1.65}
+
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr}.faq-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="circuit-bg"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><style>.cl{stroke:#7dc432;stroke-width:.5;fill:none}</style></defs><line class="cl" x1="80" y1="0" x2="80" y2="180" opacity=".4"/><line class="cl" x1="80" y1="180" x2="280" y2="180" opacity=".4"/><circle cx="280" cy="180" r="3" fill="#7dc432" opacity=".5"/><line class="cl" x1="1360" y1="0" x2="1360" y2="140" opacity=".4"/><circle cx="1080" cy="140" r="3" fill="#7dc432" opacity=".5"/></svg></div>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="#7dc432" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>BnnT<span>Global</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="sobre.html">Sobre</a></li><li><a href="blog.html">Blog</a></li><li><a href="contato.html" class="active">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="window.location='carrinho.html'">🛒<span class="cart-count" style="display:none">0</span></button>
+    <a class="nav-cta" href="contato.html">Consultoria Grátis</a>
+    <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="produtos.html">Produtos</a><a href="sobre.html">Sobre</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a><a href="carrinho.html">🛒 Carrinho</a></div>
+
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="badge anim-up"><span class="dot" style="animation:pulse 2s infinite"></span>Estamos aqui para você</div>
+  <h1 class="anim-up-2">Fale com a <span class="accent">BnnT Global</span></h1>
+  <p class="anim-up-3">Consultoria gratuita, atendimento ágil e resposta em até 24h. Escolha o canal que preferir.</p>
+</div>
+
+<div class="contact-layout">
+  <!-- CHANNELS -->
+  <div class="channels-col reveal">
+    <h2>Escolha como <span class="accent">falar conosco</span></h2>
+    <p>Estamos em todos os canais digitais para facilitar sua vida. Cada um tem um propósito — escolha o que for mais cômodo para você.</p>
+    <div class="channel-list">
+      <a href="https://wa.me/5586998020422" class="channel-card" target="_blank">
+        <div class="ch-icon wa">📱</div>
+        <div class="ch-info"><h4>WhatsApp Business</h4><p>Consultoria 1:1 e catálogo completo. Canal principal.</p></div>
+        <span class="ch-arrow">→</span>
+      </a>
+      <a href="https://t.me/bnntglobal" class="channel-card" target="_blank">
+        <div class="ch-icon tg">✈️</div>
+        <div class="ch-info"><h4>Canal Telegram</h4><p>Ofertas diárias e novidades em primeira mão.</p></div>
+        <span class="ch-arrow">→</span>
+      </a>
+      <a href="https://instagram.com/bnntglobal" class="channel-card" target="_blank">
+        <div class="ch-icon ig">📸</div>
+        <div class="ch-info"><h4>Instagram</h4><p>DMs, stories e acompanhe nosso conteúdo.</p></div>
+        <span class="ch-arrow">→</span>
+      </a>
+      <a href="https://youtube.com/@bnntglobal" class="channel-card" target="_blank">
+        <div class="ch-icon yt">▶️</div>
+        <div class="ch-info"><h4>YouTube</h4><p>Reviews e comparativos completos de produtos.</p></div>
+        <span class="ch-arrow">→</span>
+      </a>
+      <a href="https://linkedin.com/company/bnntglobal" class="channel-card" target="_blank">
+        <div class="ch-icon li">💼</div>
+        <div class="ch-info"><h4>LinkedIn</h4><p>Parcerias, B2B e novidades corporativas.</p></div>
+        <span class="ch-arrow">→</span>
+      </a>
+      <a href="mailto:contato@bnntglobal.com" class="channel-card">
+        <div class="ch-icon em">📧</div>
+        <div class="ch-info"><h4>E-mail</h4><p>contato@bnntglobal.com — para assuntos formais.</p></div>
+        <span class="ch-arrow">→</span>
+      </a>
+    </div>
+    <div class="hours-box">
+      <h4>⏰ HORÁRIO DE ATENDIMENTO</h4>
+      <div class="hours-row"><span class="day">Segunda a Sexta</span><span class="time">08h – 20h</span></div>
+      <div class="hours-row"><span class="day">Sábado</span><span class="time">09h – 17h</span></div>
+      <div class="hours-row"><span class="day">Domingo</span><span class="time">10h – 14h</span></div>
+      <div class="status-pill"><span class="dot"></span>Online agora — WhatsApp ativo</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-col reveal">
+    <h2>Envie sua <span class="accent">mensagem</span></h2>
+    <p>Preencha o formulário e nossa equipe entrará em contato pelo canal de sua preferência em até 24 horas.</p>
+    <div class="form-row">
+      <div class="form-group"><label>Nome completo</label><input type="text" placeholder="Seu nome"></div>
+      <div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(00) 00000-0000"></div>
+    </div>
+    <div class="form-group"><label>E-mail</label><input type="email" placeholder="seu@email.com"></div>
+    <div class="form-group">
+      <label>Tipo de solicitação</label>
+      <select>
+        <option value="">Selecione</option>
+        <option>Consultoria de produto</option>
+        <option>Quero indicar um produto específico</option>
+        <option>Dúvida sobre compra</option>
+        <option>Parceria / B2B</option>
+        <option>Imprensa / Mídia</option>
+        <option>Outro assunto</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Categoria de interesse</label>
+      <select>
+        <option value="">Selecione a categoria</option>
+        <option>Smartphones</option>
+        <option>Fones & Áudio</option>
+        <option>Smartwatches & Wearables</option>
+        <option>Gaming & Periféricos</option>
+        <option>Notebooks & PCs</option>
+        <option>Acessórios Gerais</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Orçamento disponível</label>
+      <select>
+        <option value="">Selecione uma faixa</option>
+        <option>Até R$ 200</option>
+        <option>R$ 200 – R$ 500</option>
+        <option>R$ 500 – R$ 1.000</option>
+        <option>R$ 1.000 – R$ 2.500</option>
+        <option>R$ 2.500 – R$ 5.000</option>
+        <option>Acima de R$ 5.000</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Detalhes da sua necessidade</label><textarea placeholder="Descreva o que você procura, uso pretendido, dúvidas específicas..."></textarea></div>
+    <div class="form-check"><input type="checkbox" id="lgpd"><label for="lgpd">Concordo com o tratamento dos meus dados conforme a LGPD para fins de atendimento e consultoria pela BnnT Global.</label></div>
+    <button class="submit-btn" onclick="handleSubmit()">Enviar mensagem <span>→</span></button>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto" class="reveal">
+      <div class="section-eyebrow">Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas <span class="accent">frequentes</span></h2>
+    </div>
+    <div class="faq-grid reveal-grid">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">A consultoria é realmente gratuita?<span class="arrow">▼</span></div><div class="faq-a"><p>Sim, 100% gratuita. Nosso modelo de negócio é baseado em comissões de afiliados pagas pelas plataformas. Você não paga nada a mais por isso.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva para receber uma resposta?<span class="arrow">▼</span></div><div class="faq-a"><p>Em até 24 horas úteis pelo formulário ou e-mail. Pelo WhatsApp e Telegram, geralmente respondemos em poucas horas durante o horário de atendimento.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Vocês garantem o produto após a compra?<span class="arrow">▼</span></div><div class="faq-a"><p>A garantia é da plataforma onde você compra (Amazon, Shopee, Mercado Livre etc.). Nós indicamos os produtos — a compra é feita diretamente na plataforma oficial.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Posso pedir indicação para produtos internacionais?<span class="arrow">▼</span></div><div class="faq-a"><p>Sim! Trabalhamos com AliExpress, Amazon global e outras plataformas internacionais. Indicamos como importar com segurança e dentro dos limites de isenção fiscal.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Posso fazer parceria com a BnnT Global?<span class="arrow">▼</span></div><div class="faq-a"><p>Sim! Temos interesse em parcerias com criadores de conteúdo, influenciadores tech e empresas. Entre em contato pelo LinkedIn ou e-mail corporativo.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Atendem empresas (B2B)?<span class="arrow">▼</span></div><div class="faq-a"><p>Sim. Atendemos empresas que precisam equipar equipes com tecnologia. Temos condições especiais para compras em volume. Entre em contato para conversar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="footer-inner"><div class="footer-grid"><div><div class="footer-logo">BnnT<span>Global</span></div><p class="footer-tagline">Tecnologia com segurança, para o Brasil e para o mundo.</p><div class="footer-social"><a class="social-btn" href="#">📸</a><a class="social-btn" href="#">📱</a><a class="social-btn" href="#">✈️</a><a class="social-btn" href="#">▶️</a></div></div><div class="footer-col"><h5>Navegação</h5><ul><li><a href="index.html">Home</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="sobre.html">Sobre</a></li><li><a href="blog.html">Blog</a></li></ul></div><div class="footer-col"><h5>Contato</h5><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Telegram</a></li><li><a href="#">Instagram</a></li><li><a href="#">E-mail</a></li></ul></div><div class="footer-col"><h5>Legal</h5><ul><li><a href="#">Privacidade</a></li><li><a href="#">Termos de Uso</a></li><li><a href="#">LGPD</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 BnnT Global · Todos os direitos reservados</p><div class="footer-badges"><span class="f-badge">Compra Segura</span><span class="f-badge">LGPD</span></div></div></div></footer>
+
+<div id="toast" class="toast"></div>
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+function handleSubmit() {
+  const lgpd = document.getElementById('lgpd');
+  if (!lgpd.checked) { showToast('⚠️ Por favor, aceite os termos antes de enviar.', 'error'); return; }
+  showToast('✅ Mensagem enviada! Entraremos em contato em breve.');
+}
+</script>
+</body>
+</html>

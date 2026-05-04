@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho — BnnT Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Favicon BnnT Global -->
+<link rel="icon" type="image/svg+xml" href="#">
+<link rel="icon" type="image/png" sizes="32x32" href="#">
+<link rel="apple-touch-icon" sizes="180x180" href="#">
+<meta name="theme-color" content="#0a1628">
+<style>
+.page-hero{padding:9rem 2rem 3rem;text-align:center;position:relative;z-index:1}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;margin:.75rem 0 .5rem}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:250px;background:radial-gradient(ellipse,rgba(125,196,50,.08),transparent);pointer-events:none}
+
+.cart-layout{max-width:1100px;margin:0 auto;padding:2rem 2rem 6rem;display:grid;grid-template-columns:1fr 360px;gap:2.5rem;position:relative;z-index:1}
+
+/* CART ITEMS */
+.cart-items-col h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;color:var(--silver2)}
+.cart-empty{text-align:center;padding:5rem 2rem;background:var(--card);border:1px solid var(--border2);border-radius:20px}
+.cart-empty .ico{font-size:4rem;margin-bottom:1rem}
+.cart-empty h3{font-family:'Syne',sans-serif;font-size:1.3rem;margin-bottom:.5rem}
+.cart-empty p{color:var(--silver);font-size:.88rem;margin-bottom:2rem}
+.cart-item{display:flex;align-items:center;gap:1.2rem;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.2rem 1.4rem;margin-bottom:1rem;transition:border-color .2s}
+.cart-item:hover{border-color:var(--border)}
+.item-emoji{width:60px;height:60px;background:var(--card2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.item-info{flex:1}
+.item-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.item-platform{font-size:.74rem;color:var(--silver);background:var(--navy3);border:1px solid var(--border2);border-radius:4px;padding:.1rem .5rem;display:inline-block;margin-bottom:.4rem}
+.item-price-unit{font-size:.8rem;color:var(--silver)}
+.item-controls{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.qty-btn{width:30px;height:30px;background:var(--navy3);border:1px solid var(--border2);border-radius:7px;color:var(--white);font-size:1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif}
+.qty-btn:hover{border-color:var(--border);background:rgba(125,196,50,.08);color:var(--green)}
+.qty-num{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;min-width:20px;text-align:center}
+.item-total{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--green);min-width:90px;text-align:right}
+.remove-btn{background:none;border:none;color:var(--silver);cursor:pointer;font-size:1rem;padding:.3rem;border-radius:6px;transition:all .2s}
+.remove-btn:hover{color:var(--red);background:rgba(224,85,85,.1)}
+
+/* SUMMARY */
+.cart-summary{position:sticky;top:90px;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2rem}
+.cart-summary h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem}
+.summary-row{display:flex;justify-content:space-between;font-size:.87rem;margin-bottom:.75rem;color:var(--silver)}
+.summary-row .val{color:var(--white)}
+.summary-divider{border:none;border-top:1px solid var(--border2);margin:1rem 0}
+.summary-total{display:flex;justify-content:space-between;align-items:flex-end}
+.summary-total .label{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+.summary-total .amount{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--green)}
+.checkout-btn{width:100%;background:var(--green);color:var(--navy);border:none;border-radius:12px;padding:1rem;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:all .2s;margin-top:1.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.checkout-btn:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(125,196,50,.2)}
+.whatsapp-btn{width:100%;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);color:#4ddb85;border-radius:12px;padding:.85rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;margin-top:.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none}
+.whatsapp-btn:hover{background:rgba(37,211,102,.18)}
+.secure-badges{display:flex;justify-content:center;gap.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border2);gap:.5rem;flex-wrap:wrap}
+.sec-badge{font-size:.7rem;color:var(--silver);display:flex;align-items:center;gap:.3rem}
+.coupon-row{display:flex;gap:.5rem;margin:1rem 0}
+.coupon-row input{flex:1;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:.6rem .85rem;color:var(--white);font-size:.83rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.coupon-row input:focus{border-color:var(--border)}
+.coupon-row button{background:rgba(125,196,50,.1);border:1px solid var(--border);border-radius:8px;color:var(--green);font-size:.8rem;font-weight:600;padding:0 .9rem;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:'Syne',sans-serif}
+.coupon-row button:hover{background:rgba(125,196,50,.2)}
+
+/* RECOMMENDED */
+.recommended{margin-top:2.5rem}
+.recommended h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1.2rem;color:var(--silver2)}
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.rec-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;text-align:center;transition:all .25s;cursor:pointer}
+.rec-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.rec-emoji{font-size:2.2rem;margin-bottom:.5rem}
+.rec-name{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;margin-bottom:.3rem;line-height:1.2}
+.rec-price{font-size:.85rem;color:var(--green);font-weight:600}
+.rec-add{display:block;width:100%;margin-top:.6rem;padding:.4rem;background:rgba(125,196,50,.08);border:1px solid var(--border2);border-radius:7px;color:var(--green2);font-size:.73rem;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.rec-add:hover{background:var(--green);color:var(--navy);font-weight:700}
+
+@media(max-width:900px){.cart-layout{grid-template-columns:1fr}.cart-summary{position:static}}
+@media(max-width:500px){.cart-item{flex-wrap:wrap}.item-controls{width:100%;justify-content:flex-end}.rec-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="circuit-bg"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><style>.cl{stroke:#7dc432;stroke-width:.5;fill:none}</style></defs><line class="cl" x1="80" y1="0" x2="80" y2="180" opacity=".3"/><line class="cl" x1="1360" y1="0" x2="1360" y2="140" opacity=".3"/></svg></div>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="#7dc432" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>BnnT<span>Global</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="sobre.html">Sobre</a></li><li><a href="blog.html">Blog</a></li><li><a href="contato.html">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="window.location='carrinho.html'">🛒<span class="cart-count" style="display:none">0</span></button>
+    <a class="nav-cta" href="contato.html">Consultoria Grátis</a>
+    <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="produtos.html">Produtos</a><a href="sobre.html">Sobre</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a></div>
+
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="badge anim-up">🛒 Meu carrinho</div>
+  <h1 class="anim-up-2">Seus produtos <span class="accent">selecionados</span></h1>
+</div>
+
+<div class="cart-layout">
+  <!-- ITEMS -->
+  <div class="cart-items-col">
+    <h2 id="cartTitle">Carrinho vazio</h2>
+    <div id="cartItems"></div>
+
+    <!-- RECOMMENDED -->
+    <div class="recommended" id="recSection" style="display:none">
+      <h3>Você também pode gostar</h3>
+      <div class="rec-grid" id="recGrid"></div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="cart-summary">
+    <h2>Resumo do pedido</h2>
+    <div class="summary-row"><span>Subtotal</span><span class="val" id="subtotal">R$ 0,00</span></div>
+    <div class="summary-row"><span>Consultoria</span><span class="val" style="color:var(--green)">Gratuita</span></div>
+    <div class="summary-row"><span>Frete estimado</span><span class="val">Calculado na plataforma</span></div>
+    <div class="coupon-row">
+      <input type="text" placeholder="Código de cupom">
+      <button onclick="showToast('⚠️ Cupom inválido ou expirado.')">Aplicar</button>
+    </div>
+    <hr class="summary-divider">
+    <div class="summary-total">
+      <div>
+        <div class="label">Total estimado</div>
+        <div style="font-size:.74rem;color:var(--silver);margin-top:.2rem">Preços nas plataformas originais</div>
+      </div>
+      <div class="amount" id="totalAmount">R$ 0,00</div>
+    </div>
+    <button class="checkout-btn" onclick="handleCheckout()">Ir para consultoria → 🛒</button>
+    <a class="whatsapp-btn" href="https://wa.me/5586998020422" target="_blank">💬 Finalizar via WhatsApp</a>
+    <div class="secure-badges">
+      <span class="sec-badge">🔒 Compra segura</span>
+      <span class="sec-badge">✅ Plataformas oficiais</span>
+      <span class="sec-badge">🌐 Afiliado verificado</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner"><div class="footer-grid"><div>
+    <div class="footer-logo">BnnT<span>Global</span></div><p class="footer-tagline">Tecnologia com segurança, para o Brasil e para o mundo.</p><div class="footer-social"><a class="social-btn" href="#">📸</a><a class="social-btn" href="#">📱</a><a class="social-btn" href="#">✈️</a><a class="social-btn" href="#">▶️</a></div></div><div class="footer-col"><h5>Navegação</h5><ul><li><a href="#">Home</a></li><li><a href="#">Produtos</a></li><li><a href="#">Sobre</a></li><li><a href="#">Contato</a></li></ul></div><div class="footer-col"><h5>Plataformas</h5><ul><li><a href="#">Amazon</a></li><li><a href="#">Shopee</a></li><li><a href="#">AliExpress</a></li><li><a href="#">Mercado Livre</a></li></ul></div><div class="footer-col"><h5>Suporte</h5><ul><li><a href="#">Fale conosco</a></li><li><a href="#">Blog & Dicas</a></li><li><a href="#">FAQ</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 BnnT Global · Todos os direitos reservados</p><div class="footer-badges"><span class="f-badge">Compra Segura</span><span class="f-badge">Afiliado Oficial</span></div></div></div></footer>
+
+<div id="toast" class="toast"></div>
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+function fmtBRL(v){return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2})}
+
+function renderCart(){
+  const wrap = document.getElementById('cartItems');
+  const title = document.getElementById('cartTitle');
+  const sub = document.getElementById('subtotal');
+  const total = document.getElementById('totalAmount');
+  const rec = document.getElementById('recSection');
+
+  const cart = BnnT.cart;
+  if(!cart.length){
+    title.textContent = 'Seu carrinho está vazio';
+    wrap.innerHTML = `<div class="cart-empty"><div class="ico">🛒</div><h3>Nenhum produto selecionado</h3><p>Explore nosso catálogo e adicione produtos que te interessam para receber consultoria personalizada.</p><a href="produtos.html" class="btn-primary">Ver catálogo →</a></div>`;
+    sub.textContent = 'R$ 0,00'; total.textContent = 'R$ 0,00';
+    rec.style.display = 'none';
+    return;
+  }
+
+  title.textContent = `${cart.length} ${cart.length===1?'produto':'produtos'} selecionados`;
+  wrap.innerHTML = cart.map(item => `
+  <div class="cart-item">
+    <div class="item-emoji">${item.emoji}</div>
+    <div class="item-info">
+      <div class="item-name">${item.name}</div>
+      <div class="item-price-unit">${fmtBRL(item.price)} / unidade</div>
+    </div>
+    <div class="item-controls">
+      <button class="qty-btn" onclick="BnnT.updateQty(${item.id},-1);renderCart()">−</button>
+      <span class="qty-num">${item.qty}</span>
+      <button class="qty-btn" onclick="BnnT.updateQty(${item.id},1);renderCart()">+</button>
+      <span class="item-total">${fmtBRL(item.price*item.qty)}</span>
+      <button class="remove-btn" onclick="BnnT.removeItem(${item.id});renderCart()" title="Remover">🗑</button>
+    </div>
+  </div>`).join('');
+
+  const t = BnnT.getTotal();
+  sub.textContent = fmtBRL(t);
+  total.textContent = fmtBRL(t);
+
+  // Recommended
+  const cartIds = cart.map(i=>i.id);
+  const recs = PRODUCTS.filter(p=>!cartIds.includes(p.id)).slice(0,3);
+  if(recs.length){
+    rec.style.display='block';
+    document.getElementById('recGrid').innerHTML = recs.map(p=>`
+    <div class="rec-card">
+      <div class="rec-emoji">${p.emoji}</div>
+      <div class="rec-name">${p.name}</div>
+      <div class="rec-price">${fmtBRL(p.price)}</div>
+      <button class="rec-add" onclick="BnnT.addItem({id:${p.id},name:'${p.name}',price:${p.price},emoji:'${p.emoji}'});renderCart()">+ Adicionar</button>
+    </div>`).join('');
+  }
+}
+
+function handleCheckout(){
+  if(!BnnT.cart.length){showToast('⚠️ Adicione produtos ao carrinho primeiro.');return;}
+  const msg = encodeURIComponent('Olá! Tenho interesse nos seguintes produtos:\n\n'+BnnT.cart.map(i=>`• ${i.name} (x${i.qty}) — R$ ${(i.price*i.qty).toFixed(2)}`).join('\n')+'\n\nTotal estimado: R$ '+BnnT.getTotal().toFixed(2));
+  window.open('https://wa.me/5586998020422?text='+msg,'_blank');
+}
+
+document.addEventListener('DOMContentLoaded', renderCart);
+</script>
+</body>
+</html>

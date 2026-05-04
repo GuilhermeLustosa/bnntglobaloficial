@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BnnT Global — Tecnologia com Segurança para o Mundo</title>
+<meta name="description" content="Curadoria especializada em tecnologia. Encontramos o produto perfeito para você nas melhores plataformas globais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Favicon BnnT Global -->
+<link rel="icon" type="image/svg+xml" href="#">
+<link rel="icon" type="image/png" sizes="32x32" href="#">
+<link rel="apple-touch-icon" sizes="180x180" href="#">
+<meta name="theme-color" content="#0a1628">
+<style>
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:9rem 2rem 5rem;text-align:center}
+.hero-wrap{max-width:840px;margin:0 auto}
+.hero-glow{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(ellipse,rgba(125,196,50,.1) 0%,transparent 65%);pointer-events:none}
+h1.hero-title{font-family:'Syne',sans-serif;font-size:clamp(3rem,7.5vw,6rem);font-weight:800;line-height:1.03;letter-spacing:-3px;margin-bottom:1.5rem}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:var(--silver);max-width:580px;margin:0 auto 3rem;font-weight:300;line-height:1.75}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.hero-stats{display:flex;gap:3.5rem;justify-content:center;flex-wrap:wrap;padding-top:3rem;border-top:1px solid var(--border2)}
+.stat-item .val{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--green)}
+.stat-item .lbl{font-size:.76rem;color:var(--silver);letter-spacing:.06em;margin-top:.2rem}
+
+/* ── FEATURED ── */
+#featured{background:var(--navy2);padding:6rem 2rem}
+.featured-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.products-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+
+/* ── CATEGORIES ── */
+#categories{background:var(--navy);padding:6rem 2rem}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.cat-card{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:2rem 1.5rem;text-align:center;text-decoration:none;transition:all .3s;display:block;position:relative;overflow:hidden}
+.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(125,196,50,.04),transparent);opacity:0;transition:opacity .3s}
+.cat-card:hover{border-color:var(--border);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.cat-card:hover::before{opacity:1}
+.cat-emoji{font-size:2.8rem;margin-bottom:1rem;display:block}
+.cat-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.cat-count{font-size:.78rem;color:var(--silver)}
+
+/* ── HOW ── */
+#how{background:var(--navy2);padding:6rem 2rem}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem;position:relative}
+.how-grid::before{content:'';position:absolute;top:2.2rem;left:calc(12.5% + 1.5rem);right:calc(12.5% + 1.5rem);height:1px;background:linear-gradient(90deg,transparent,rgba(125,196,50,.3) 20%,rgba(125,196,50,.3) 80%,transparent);pointer-events:none}
+.step{text-align:center;padding:1.5rem 1rem}
+.step-n{width:44px;height:44px;border:2px solid var(--green3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--green);margin:0 auto 1rem;background:var(--card2);position:relative;z-index:1}
+.step-icon{font-size:1.8rem;margin-bottom:.75rem}
+.step h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.8rem;color:var(--silver);line-height:1.6}
+
+/* ── TRUST BANNER ── */
+#trust{background:var(--navy);padding:5rem 2rem}
+.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.trust-box{background:var(--card2);border:1px solid var(--border2);border-radius:16px;padding:2rem;text-align:center;transition:border-color .2s}
+.trust-box:hover{border-color:var(--border)}
+.trust-box .ico{font-size:2rem;margin-bottom:1rem}
+.trust-box h4{font-family:'Syne',sans-serif;font-size:.95rem;margin-bottom:.5rem}
+.trust-box p{font-size:.82rem;color:var(--silver);line-height:1.55}
+
+/* ── CTA ── */
+.cta-section{padding:5rem 2rem;position:relative;z-index:1}
+.cta-inner{background:linear-gradient(135deg,var(--navy3),var(--navy4));border:1px solid var(--border);border-radius:24px;padding:4rem 3rem;text-align:center;max-width:860px;margin:0 auto;position:relative;overflow:hidden}
+.cta-inner::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(ellipse,rgba(125,196,50,.07),transparent);pointer-events:none}
+.cta-inner h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:.8rem}
+.cta-inner p{color:var(--silver);max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
+
+/* ── TESTIMONIALS ── */
+#depoimentos{background:var(--navy2);padding:6rem 2rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.testi-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.8rem;transition:border-color .2s}
+.testi-card:hover{border-color:var(--border)}
+.stars{color:var(--green);font-size:.9rem;margin-bottom:1rem;letter-spacing:2px}
+.testi-text{font-size:.88rem;color:var(--silver2);line-height:1.65;font-style:italic;margin-bottom:1.2rem}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--navy3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.testi-name{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700}
+.testi-location{font-size:.72rem;color:var(--silver)}
+
+@media(max-width:900px){
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .how-grid{grid-template-columns:1fr 1fr}.how-grid::before{display:none}
+  .trust-row,.testi-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:1.5rem}
+  .cta-inner{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="circuit-bg"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><style>.cl{stroke:#7dc432;stroke-width:.5;fill:none}</style></defs><line class="cl" x1="80" y1="0" x2="80" y2="180" opacity=".5"/><line class="cl" x1="80" y1="180" x2="280" y2="180" opacity=".5"/><circle cx="280" cy="180" r="3" fill="#7dc432" opacity=".6"/><line class="cl" x1="280" y1="180" x2="280" y2="380" opacity=".4"/><line class="cl" x1="1360" y1="0" x2="1360" y2="140" opacity=".5"/><line class="cl" x1="1360" y1="140" x2="1080" y2="140" opacity=".5"/><circle cx="1080" cy="140" r="3" fill="#7dc432" opacity=".6"/><line class="cl" x1="40" y1="620" x2="40" y2="900" opacity=".3"/><line class="cl" x1="40" y1="620" x2="230" y2="620" opacity=".3"/><circle cx="230" cy="620" r="3" fill="#7dc432" opacity=".4"/><rect x="77" y="177" width="6" height="6" fill="none" stroke="#7dc432" stroke-width=".5" opacity=".4"/></svg></div>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#7dc432" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/><path d="M16 7l4-2" stroke-linecap="round"/></svg>
+    BnnT<span>Global</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="produtos.html">Produtos</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="window.location='carrinho.html'" title="Carrinho">🛒<span class="cart-count" style="display:none">0</span></button>
+    <a class="nav-cta" href="contato.html">Consultoria Grátis</a>
+    <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="produtos.html">Produtos</a><a href="sobre.html">Sobre</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a><a href="carrinho.html">🛒 Carrinho</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-wrap">
+    <div class="badge anim-up" style="margin-bottom:1.8rem"><span class="dot" style="animation:pulse 2s infinite"></span>Consultoria em tecnologia global</div>
+    <h1 class="hero-title anim-up-2">Tecnologia <span class="accent">certa</span>,<br><span class="dim">no melhor preço</span></h1>
+    <p class="hero-sub anim-up-3">Não enviamos apenas links. Somos seus consultores — encontramos o produto perfeito para você nas melhores plataformas do mundo, com segurança e agilidade.</p>
+    <div class="hero-btns anim-up-4">
+      <a href="produtos.html" class="btn-primary">Ver Catálogo Completo →</a>
+      <a href="sobre.html" class="btn-secondary">Como funciona</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="val">12+</div><div class="lbl">Categorias de produto</div></div>
+      <div class="stat-item"><div class="val">5+</div><div class="lbl">Plataformas parceiras</div></div>
+      <div class="stat-item"><div class="val">100%</div><div class="lbl">Compra com segurança</div></div>
+      <div class="stat-item"><div class="val">Global</div><div class="lbl">Alcance mundial</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="dot"></span>Amazon</div><div class="marquee-item"><span class="dot"></span>Shopee</div><div class="marquee-item"><span class="dot"></span>AliExpress</div><div class="marquee-item"><span class="dot"></span>Mercado Livre</div><div class="marquee-item"><span class="dot"></span>Temu</div><div class="marquee-item"><span class="dot"></span>Curadoria Especializada</div><div class="marquee-item"><span class="dot"></span>Consultoria Gratuita</div><div class="marquee-item"><span class="dot"></span>Tecnologia com Segurança</div><div class="marquee-item"><span class="dot"></span>Distribuição Nacional</div><div class="marquee-item"><span class="dot"></span>Visão Internacional</div>
+    <div class="marquee-item"><span class="dot"></span>Amazon</div><div class="marquee-item"><span class="dot"></span>Shopee</div><div class="marquee-item"><span class="dot"></span>AliExpress</div><div class="marquee-item"><span class="dot"></span>Mercado Livre</div><div class="marquee-item"><span class="dot"></span>Temu</div><div class="marquee-item"><span class="dot"></span>Curadoria Especializada</div><div class="marquee-item"><span class="dot"></span>Consultoria Gratuita</div><div class="marquee-item"><span class="dot"></span>Tecnologia com Segurança</div><div class="marquee-item"><span class="dot"></span>Distribuição Nacional</div><div class="marquee-item"><span class="dot"></span>Visão Internacional</div>
+  </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<section id="featured">
+  <div class="container">
+    <div class="featured-header reveal">
+      <div>
+        <div class="section-eyebrow">Destaques do Mês</div>
+        <h2 class="section-title">Os melhores produtos,<br><span class="accent">curados para você</span></h2>
+      </div>
+      <a href="produtos.html" class="btn-secondary">Ver todos →</a>
+    </div>
+    <div class="products-row reveal-grid" id="featuredGrid"></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto" class="reveal">
+      <div class="section-eyebrow">Explore</div>
+      <h2 class="section-title">Todas as <span class="accent">categorias</span></h2>
+      <p class="section-desc" style="margin:0 auto">Do smartphone ao acessório, passando por gaming e wearables. Tudo com curadoria especializada.</p>
+    </div>
+    <div class="cat-grid reveal-grid">
+      <a href="produtos.html?cat=smartphones" class="cat-card"><span class="cat-emoji">📱</span><div class="cat-name">Smartphones</div><div class="cat-count">Alto desempenho & custo-benefício</div></a>
+      <a href="produtos.html?cat=audio" class="cat-card"><span class="cat-emoji">🎧</span><div class="cat-name">Áudio & Fones</div><div class="cat-count">Fones, caixas e muito mais</div></a>
+      <a href="produtos.html?cat=wearables" class="cat-card"><span class="cat-emoji">⌚</span><div class="cat-name">Wearables</div><div class="cat-count">Smartwatches e fitness</div></a>
+      <a href="produtos.html?cat=gaming" class="cat-card"><span class="cat-emoji">🎮</span><div class="cat-name">Gaming</div><div class="cat-count">Controles, monitores e mais</div></a>
+      <a href="produtos.html?cat=notebooks" class="cat-card"><span class="cat-emoji">💻</span><div class="cat-name">Notebooks</div><div class="cat-count">Trabalho, estudo e criação</div></a>
+      <a href="produtos.html?cat=acessorios" class="cat-card"><span class="cat-emoji">🔌</span><div class="cat-name">Acessórios</div><div class="cat-count">SSDs, webcams, roteadores</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto" class="reveal">
+      <div class="section-eyebrow">Processo simples</div>
+      <h2 class="section-title">Como funciona a <span class="accent">BnnT Global</span></h2>
+    </div>
+    <div class="how-grid reveal-grid">
+      <div class="step"><div class="step-n">1</div><div class="step-icon">💬</div><h4>Você nos conta o que precisa</h4><p>Entre em contato pelo WhatsApp, Telegram ou nosso site. Sem complicação.</p></div>
+      <div class="step"><div class="step-n">2</div><div class="step-icon">🔍</div><h4>Nossa equipe faz a curadoria</h4><p>Analisamos as melhores opções em todas as plataformas para o seu perfil.</p></div>
+      <div class="step"><div class="step-n">3</div><div class="step-icon">✅</div><h4>Você recebe as recomendações</h4><p>Links verificados e seguros para você comparar e escolher com tranquilidade.</p></div>
+      <div class="step"><div class="step-n">4</div><div class="step-icon">📦</div><h4>Compra com segurança total</h4><p>Você compra na plataforma original com toda a proteção do consumidor.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-eyebrow">Por que nos escolher</div>
+      <h2 class="section-title">Segurança, <span class="accent">facilidade</span> e agilidade</h2>
+    </div>
+    <div class="trust-row reveal-grid">
+      <div class="trust-box"><div class="ico">🔒</div><h4>Compra 100% Segura</h4><p>Trabalhamos apenas com plataformas oficiais. Você nunca é redirecionado para sites falsos.</p></div>
+      <div class="trust-box"><div class="ico">🌟</div><h4>Curadoria de Qualidade</h4><p>Selecionamos apenas o que tem melhor avaliação e custo-benefício comprovado.</p></div>
+      <div class="trust-box"><div class="ico">⚡</div><h4>Resposta em 24h</h4><p>Atendimento ágil em múltiplos canais. Sua dúvida não fica sem resposta.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="depoimentos">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-eyebrow">Depoimentos</div>
+      <h2 class="section-title">O que nossos clientes <span class="accent">dizem</span></h2>
+    </div>
+    <div class="testi-grid reveal-grid">
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"A BnnT me salvou! Procurava um smartphone há semanas sem entender as diferenças. Eles me explicaram tudo e indiquei o modelo perfeito dentro do meu orçamento."</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Carla Mendonça</div><div class="testi-location">São Paulo, SP</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"Comprei o fone pelo link que eles me mandaram. Chegou rápido, produto original e eles ainda acompanharam o rastreio comigo. Atendimento top!"</p><div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Rafael Souza</div><div class="testi-location">Recife, PE</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">"Não sabia nada de tecnologia e eles me atenderam com paciência no WhatsApp. Comprei meu notebook com segurança. Recomendo demais a BnnT Global!"</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Márcia Lima</div><div class="testi-location">Teresina, PI</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section">
+  <div class="cta-inner reveal">
+    <h2>Tecnologia para o <span class="accent">Brasil e para o mundo</span></h2>
+    <p>Distribuição nacional, visão internacional e confiança garantida. Junte-se a quem já escolheu comprar com inteligência.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="contato.html" class="btn-primary">Falar com consultor →</a>
+      <a href="https://wa.me/5586998020422" class="btn-secondary" target="_blank">💬 WhatsApp direto</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div><div class="footer-logo">BnnT<span>Global</span></div><p class="footer-tagline">Tecnologia com segurança, para o Brasil e para o mundo. Curadoria especializada em produtos tech das melhores plataformas globais.</p><div class="footer-social"><a class="social-btn" href="#">📸</a><a class="social-btn" href="#">📱</a><a class="social-btn" href="#">✈️</a><a class="social-btn" href="#">▶️</a><a class="social-btn" href="#">💼</a></div></div>
+      <div class="footer-col"><h5>Navegação</h5><ul><li><a href="index.html">Home</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="sobre.html">Sobre nós</a></li><li><a href="blog.html">Blog</a></li><li><a href="contato.html">Contato</a></li></ul></div>
+      <div class="footer-col"><h5>Plataformas</h5><ul><li><a href="#">Amazon</a></li><li><a href="#">Shopee</a></li><li><a href="#">AliExpress</a></li><li><a href="#">Mercado Livre</a></li><li><a href="#">Temu</a></li></ul></div>
+      <div class="footer-col"><h5>Categorias</h5><ul><li><a href="produtos.html">Smartphones</a></li><li><a href="produtos.html">Áudio</a></li><li><a href="produtos.html">Wearables</a></li><li><a href="produtos.html">Gaming</a></li><li><a href="produtos.html">Notebooks</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 BnnT Global · bnntglobal.com · Todos os direitos reservados</p><div class="footer-badges"><span class="f-badge">Compra Segura</span><span class="f-badge">Afiliado Oficial</span><span class="f-badge">Global</span></div></div>
+  </div>
+</footer>
+
+<div id="toast" class="toast"></div>
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('featuredGrid');
+  const featured = PRODUCTS.filter(p => p.featured).slice(0, 4);
+  featured.forEach(p => {
+    grid.innerHTML += `
+    <div class="product-card">
+      ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      <div class="product-img">${p.emoji}</div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-meta">
+          <div class="product-price"><small>a partir de</small>R$ ${p.price.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div>
+          <span class="product-platform">${p.platform}</span>
+        </div>
+        <button class="add-cart-btn" onclick="BnnT.addItem({id:${p.id},name:'${p.name}',price:${p.price},emoji:'${p.emoji}'})">🛒 Adicionar ao carrinho</button>
+      </div>
+    </div>`;
+  });
+});
+</script>
+</body>
+</html>
